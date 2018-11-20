@@ -1,0 +1,76 @@
+﻿@model LoginMVC.Models.tbl_Login
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<html>
+<head>
+
+    <title>Login Demo</title>
+    <style>
+        .body {
+            position: absolute;
+            left: 40%;
+            top: 30%;
+        }
+
+        td {
+            padding: 10px 10px 10px 10px;
+        }
+        .field-validation-error{
+            color: red;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="body">
+        @using (Html.BeginForm("autherize", "Login", FormMethod.Post))
+        {
+            <table border="1">
+                <tr align="center">
+                    <td colspan="2" style="font-weight:bold;color:blue;">
+                        Application Name
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Username)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Username)
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        @Html.LabelFor(model => model.Passwd)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Passwd)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="btnsubmit" value="Login" />
+                        <input type="reset" name="btnreset" value="Reset" />
+                    </td>
+                </tr>
+            </table>
+            @Html.ValidationMessageFor(model => model.Username)
+            <br />
+            @Html.ValidationMessageFor(model => model.Passwd)
+            <br />
+            <label class="field-validation-error">@Html.DisplayFor(model => model.Err) </label>
+        }
+
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+
+}
+
+<h2>Dashboard</h2>
+<h3> welcome to Aniket Rana ,</h3>
+
+<a href="@Url.Action("Logout","Login")" >Logout</a>
